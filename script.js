@@ -5,6 +5,9 @@ const backButton = document.querySelector("#back-btn");
 const sendButton = document.querySelector("#send-btn");
 const sendStatus = document.querySelector("#send-status");
 const timeInputs = document.querySelectorAll('input[name="date-time"]');
+const successModal = document.querySelector("#success-modal");
+const successMessage = document.querySelector("#success-message");
+const closeModalButton = document.querySelector("#close-modal-btn");
 
 const TELEGRAM_ENDPOINT = "https://date-invitation.andylolka03.workers.dev";
 
@@ -35,6 +38,19 @@ function returnToInvitation() {
   document.querySelector("#yes-btn").focus();
 }
 
+function showSuccessModal(selectedTime) {
+  successMessage.textContent = `Тогда встречаемся в ${selectedTime}. Я всё подготовлю — до встречи ❤️`;
+  successModal.hidden = false;
+  document.body.classList.add("modal-open");
+  closeModalButton.focus();
+}
+
+function closeSuccessModal() {
+  successModal.hidden = true;
+  document.body.classList.remove("modal-open");
+  sendButton.focus();
+}
+
 async function sendSelectedTime() {
   const selectedTime = document.querySelector('input[name="date-time"]:checked')?.value;
   if (!selectedTime) return;
@@ -58,6 +74,7 @@ async function sendSelectedTime() {
 
     sendButton.textContent = "Время подтверждено ✓";
     sendStatus.textContent = "Готово! Ответ уже отправлен ♡";
+    showSuccessModal(selectedTime);
   } catch (error) {
     sendButton.disabled = false;
     sendButton.textContent = "Попробовать ещё раз";
@@ -74,3 +91,10 @@ timeInputs.forEach((input) => {
   });
 });
 sendButton.addEventListener("click", sendSelectedTime);
+closeModalButton.addEventListener("click", closeSuccessModal);
+successModal.addEventListener("click", (event) => {
+  if (event.target.classList.contains("success-modal__backdrop")) closeSuccessModal();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !successModal.hidden) closeSuccessModal();
+});

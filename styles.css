@@ -30,6 +30,10 @@ body {
   font-family: "Manrope", sans-serif;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .glow {
   position: fixed;
   width: 320px;
@@ -245,6 +249,62 @@ h2 {
   text-transform: uppercase;
 }
 
+.success-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.success-modal[hidden] {
+  display: none;
+}
+
+.success-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(71, 47, 53, 0.42);
+  backdrop-filter: blur(7px);
+  animation: reveal 0.3s ease both;
+}
+
+.success-modal__content {
+  position: relative;
+  width: min(100%, 430px);
+  padding: 42px 30px 34px;
+  text-align: center;
+  background: var(--cream);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 26px;
+  box-shadow: 0 30px 80px rgba(71, 47, 53, 0.3);
+  animation: modal-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.success-modal__heart {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1.5rem;
+  background: var(--rose);
+  border-radius: 50%;
+  animation: heartbeat 2.2s ease-in-out infinite;
+}
+
+.success-modal__content h2 {
+  margin-bottom: 16px;
+}
+
+.success-modal__content p:not(.eyebrow) {
+  margin: 0 auto 25px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .answer {
   position: absolute;
   inset: 0;
@@ -393,6 +453,11 @@ h2 {
 @keyframes reveal {
   from { opacity: 0; transform: scale(1.03); }
   to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes fall {
