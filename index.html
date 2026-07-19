@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff4f2" />
+    <meta name="description" content="Маленькое приглашение на особенный вечер" />
+    <title>Для тебя 💌</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="glow glow-one" aria-hidden="true"></div>
+    <div class="glow glow-two" aria-hidden="true"></div>
+
+    <main class="card" id="card">
+      <div class="card__stamp" aria-hidden="true">♡</div>
+
+      <section class="invitation" id="invitation">
+        <p class="eyebrow">маленькое письмо для тебя</p>
+        <div class="heart" aria-hidden="true">♥</div>
+        <h1>Пойдёшь со мной<br />на свидание?</h1>
+        <p class="subtitle">
+          Хочу провести этот вечер рядом с тобой —<br class="desktop-break" />
+          вкусно поесть, много смеяться и никуда не спешить.
+        </p>
+
+        <div class="details" aria-label="Детали приглашения">
+          <div class="detail">
+            <span class="detail__icon" aria-hidden="true">✦</span>
+            <span>Понедельник, 20 июля</span>
+          </div>
+          <div class="detail">
+            <span class="detail__icon" aria-hidden="true">⌖</span>
+            <span>Место — сюрприз</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="button button--primary" id="yes-btn" type="button">
+            Да, с радостью
+          </button>
+          <button class="button button--soft" id="also-yes-btn" type="button">
+            Конечно, да
+          </button>
+        </div>
+        <p class="signature">С теплом и лёгким волнением ♡</p>
+      </section>
+
+      <section class="answer" id="answer" aria-live="polite" hidden>
+        <div class="answer__hearts" aria-hidden="true">♡ ♥ ♡</div>
+        <p class="eyebrow">понедельник · 20 июля</p>
+        <h2>Выбери время</h2>
+        <p class="answer__intro">Когда тебе будет удобнее?</p>
+
+        <fieldset class="time-picker">
+          <legend class="visually-hidden">Выберите время свидания</legend>
+          <label class="time-option">
+            <input type="radio" name="date-time" value="18:00" />
+            <span>18:00</span>
+          </label>
+          <label class="time-option">
+            <input type="radio" name="date-time" value="19:00" />
+            <span>19:00</span>
+          </label>
+          <label class="time-option">
+            <input type="radio" name="date-time" value="20:00" />
+            <span>20:00</span>
+          </label>
+          <label class="time-option">
+            <input type="radio" name="date-time" value="21:00" />
+            <span>21:00</span>
+          </label>
+        </fieldset>
+
+        <button class="button button--primary answer__send" id="send-btn" type="button" disabled>
+          Подтвердить время
+        </button>
+        <p class="send-status" id="send-status" aria-live="polite"></p>
+        <button class="back-link" id="back-btn" type="button">← Вернуться</button>
+      </section>
+    </main>
+
+    <p class="footer-note">Сделано специально для тебя</p>
+    <script src="script.js"></script>
+  </body>
+</html>
